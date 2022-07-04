@@ -26,7 +26,7 @@ def get_db():
 
 @app.get("/")
 def home(request: Request, db: Session = Depends(get_db)):
-    todos = db.query(models.Todo).all()
+    todos = db.query(models.Inventory).all()
     return templates.TemplateResponse("base.html",
                                       {"request": request, "todo_list": todos})
 

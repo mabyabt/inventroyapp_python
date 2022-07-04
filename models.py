@@ -3,10 +3,10 @@ from sqlalchemy import Boolean, Column, Integer, String
 from database import Base
 
 
-class Todo(Base):
-    __tablename__ = "todos"
+class Inventory(Base):
+    __tablename__ = "invetory"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String)
-    complete = Column(Boolean, default=False)
+    name = Column(String)
+    quantity = Column(Integer, default=0)
 
