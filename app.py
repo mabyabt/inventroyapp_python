@@ -42,8 +42,8 @@ def add(request: Request, title: str = Form(...), quantity: int = Form(...), db:
 
 
 @app.get("/update/{invetory_id}")
-def update(request: Request, todo_id: int, db: Session = Depends(get_db)):
-    todo = db.query(models.Inventory).filter(models.Inventory.id == todo_id).first()
+def update(request: Request, item_id: int, db: Session = Depends(get_db)):
+    todo = db.query(models.Inventory).filter(models.Inventory.id == item_id).first()
     todo.complete = not todo.complete
     db.commit()
 
@@ -52,9 +52,9 @@ def update(request: Request, todo_id: int, db: Session = Depends(get_db)):
 
 
 @app.get("/delete/{items_id}")
-def delete(request: Request, todo_id: int, db: Session = Depends(get_db)):
-    todo = db.query(models.Todo).filter(models.Todo.id == todo_id).first()
-    db.delete(todo)
+def delete(request: Request, item_id: int, db: Session = Depends(get_db)):
+    item = db.query(models.Inventory).filter(models.Inventory.id == item_id).first()
+    db.delete(item)
     db.commit()
 
     url = app.url_path_for("home")

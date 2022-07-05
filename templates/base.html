@@ -26,18 +26,18 @@
 
         <hr>
 
-        {% for todo in todo_list %}
+        {% for item in item_list %}
         <div class="ui segment">
-            <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
+            <p class="ui big header">{{item.id }} | {{ item.title }}</p>
 
-            {% if todo.complete == False %}
+            {% if item.complete == False %}
             <span class="ui gray label">Not Complete</span>
             {% else %}
             <span class="ui green label">Completed</span>
             {% endif %}
 
-            <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
-            <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
+            <a class="ui blue button" href="/update/{{ item.id }}">Update</a>
+            <a class="ui red button" href="/delete/{{ item.id }}">Delete</a>
         </div>
         {% endfor %}
     </div>
