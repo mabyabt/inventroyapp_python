@@ -12,14 +12,14 @@
 
 <body>
     <div style="margin-top: 50px;" class="ui container">
-        <h1 class="ui center aligned header">To Do App</h1>
+        <h1 class="ui center aligned header">Inventory App</h1>
 
         <form class="ui form" action="/add" method="post">
             <label>Inventory</label><br>
             <div class="field" style="  display: flex; ">
                 
                 <input type="text" name="title" placeholder="Enter item name..." style="width: 90%;">
-                <input type="number" id="quantity" name="quantity" min="0" max="10000" placeholder="1" style="width: 10%;"> <br>
+                <input type="number" id="quantity" name="quantity" min="0" max="10000" value="1" style="width: 10%;"> <br>
             </div>
             <button class="ui blue button" type="submit">Add</button>
         </form>
@@ -29,16 +29,16 @@
         {% for item in item_list %}
         <div class="ui segment">
             <div style="  display: flex; ">
-            <p class="ui big header" style="width: 70%;">{{item.id }} | {{ item.name }}</p>
-                <p style="width: 30%;">{{item.quantity}}</p></div>
+            <p class="ui big header" style="width: 90%;">{{item.id }} | {{ item.name }}</p>
+                <p style="width: 10%;">{{item.quantity}}</p></div>
             {% if item.complete == False %}
             <span class="ui gray label">Not Complete</span>
             {% else %}
             <span class="ui green label">Completed</span>
             {% endif %}
 
-            <a class="ui blue button" href="/update/{{ item.id }}">Update</a>
-            <a class="ui red button"  style="float: right;" href="/delete/{{ item.id }}">Delete</a>
+            <!--<a class="ui blue button" href="/update/{{ item.id }}">Update</a>-->
+            <a class="ui red button"  style="float: right; width: 10%;" href="/delete/{{ item.id }}">Delete</a>
         </div>
         {% endfor %}
     </div>
