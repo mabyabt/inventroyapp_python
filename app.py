@@ -41,10 +41,10 @@ def add(request: Request, title: str = Form(...), quantity: int = Form(...), db:
     return RedirectResponse(url=url, status_code=status.HTTP_303_SEE_OTHER)
 
 
-@app.get("/update/{item_id}")
-def update(request: Request, item_id: int, db: Session = Depends(get_db)):
-    todo = db.query(models.Inventory).filter(models.Inventory.id == item_id).first()
-    todo.complete = not todo.complete
+@app.get("/update/{item_id}/{quantity_update}")
+def update(request: Request, item_id: int,  quantity_update: int, db: Session = Depends(get_db)):
+    item = db.query(models.Inventory).filter(models.Inventory.id == item_id).first()
+    item.quantity = quantity_update
     db.commit()
 
     url = app.url_path_for("home")
